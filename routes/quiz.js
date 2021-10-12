@@ -13,15 +13,6 @@ router.get('/home', function(req, res, next) {
      quizService.getAllQuizes(onSuccess);
 });
 
-// router.get('/view', function(req, res, next) {
-//     function onSuccess(result) {
-//         let quiz = result.rows;
-//         res.render('quiz/view', {quiz: quiz});
-//     }
-//      quizService.getMathsQuiz(onSuccess);
-//      //quizService.getMathsQuestionsQuiz(onSuccess);
-//      //quizService.getMathsAnswers(onSuccess);
-// });
 
 router.get('/view', function(req, res, next) {
     function onSuccess(result) {
@@ -30,9 +21,43 @@ router.get('/view', function(req, res, next) {
         let answer = result.rows
         res.render('quiz/view', {quiz: quiz, questions: questions, answer: answer});
     }
-     //quizService.getMathsQuiz(onSuccess);
-     quizService.getMathsQuizQuestionsAnswers(onSuccess);
-     //quizService.getMathsAnswers(onSuccess);
+    //if(){
+        quizService.getMathsQuizQuestionsAnswers(onSuccess);
+    //}
+    //else if(){
+      //  quizService.getHistoryQuizQuestionsAnswers(onSuccess);
+    //}
+    //else if(activeButton && button.dataset.index === 3){
+    //    quizService.getCSQuizQuestionsAnswers(onSuccess); 
+    //}
+    //else{
+     //   console.log('Error')
+    //}
+});
+
+/* Create new quiz */
+router.get('/new', function(req, res, next) {
+        res.render('quiz/new');
+});
+router.post('/', function(req, res) {
+    function onSuccess(result) {
+        res.redirect('/home');
+    }
+    quizService.createNewQuiz(req.body, onSuccess)
+});
+
+//////////////////////////////// Delete
+router.get('/delete', function(req, res, next) {
+    res.render('quiz/delete');
+});
+
+router.post('/delete', function(req, res) {
+        //const bookId = parseInt(req.params.bookId)
+        //console.log(bookId);
+         function onSuccess(result) {
+            res.redirect('/quiz/home');
+    }
+    quizService.deleteQuiz(req.body, onSuccess)
 });
 
 

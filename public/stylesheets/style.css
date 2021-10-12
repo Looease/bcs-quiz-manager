@@ -75,9 +75,12 @@ a{
   margin: 20px 0;
 }
 
-.btn {
-  width: 75px;
+td{
   height: 50px;
+}
+
+.btn {
+  margin: 20px;
   --hue: var(--hue-neutral);
   border: 1px solid hsl(var(--hue), 100%, 30%);
   background-color: hsl(var(--hue), 100%, 50%);
@@ -85,6 +88,7 @@ a{
   padding: 5px 10px;
   color: white;
   outline: none;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -124,11 +128,10 @@ a{
 ul{
   list-style: none;
 }
-.quiz-select{
-  margin: 50px;
-  display: flex;
-  justify-content: space-evenly;
+.btn a{
+  margin-left: 10px;
 }
+
 .view-questions-container{
   height: 2000vh;
   display: flex;
@@ -143,4 +146,8 @@ ul{
 }
 .view-question li{
   margin: 20px 10px;
+}
+
+.active{
+  background-color: red;
 }

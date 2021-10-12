@@ -1,18 +1,21 @@
-<table>
+<table id="buttons-group">
     <thead>
     <h1>Quiz Categories</h1>
     </thead>
     {{#each quiz}}
         <tr>
-            <td><a href="">{{this.title}}</a></td>
-            <td><button>Play</button></td>
-            <td><button>View</button></td>
-            <td><button>Edit</button></td>
-            <td><button>Delete</button></td>
+            <td>{{this.title}}</td>
+            <td><a href="" class="btn">Play</a></td>
+            <td><a href="" class="btn">View</a></td>
+            <td><a href="" class="btn">Edit</a></td>
         </tr>
     {{/each}}
 </table>
 
+<a href="/quiz/new" class="btn">Create new quiz</a>
+
+
+<a href="/quiz/delete" class="btn">Delete Quiz</a>
 
 
 {{!-- <ul>
