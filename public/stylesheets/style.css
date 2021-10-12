@@ -25,6 +25,16 @@ body {
   /* background-color: navy; */
 }
 
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-form input{
+  margin: 20px;
+}
+
+
 body.correct{
   --hue: var(--hue-correct);
   /* background-color: green; */
@@ -119,7 +129,18 @@ ul{
   display: flex;
   justify-content: space-evenly;
 }
-/* .quiz-select:first-child{
+.view-questions-container{
+  height: 2000vh;
   display: flex;
-  justify-content: space-around;
-} */
+  flex-direction: row;
+  border: 1px solid #000;
+  overflow: scroll;
+}
+
+.view-question{
+  display: flex;
+  flex-direction: column;
+}
+.view-question li{
+  margin: 20px 10px;
+}

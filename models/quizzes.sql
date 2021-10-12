@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS quizzes;
 
-CREATE TABLE quizzes (id SERIAL PRIMARY KEY, name VARCHAR(255));
+CREATE TABLE quizzes (id SERIAL PRIMARY KEY, title VARCHAR(255));
 
-INSERT INTO quizzes (id, name)
+INSERT INTO quizzes (id, title)
 VALUES
   (1, 'Maths'),
   (2, 'History'),

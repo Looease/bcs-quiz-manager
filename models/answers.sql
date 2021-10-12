@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS answers;
+
 CREATE TABLE answers(
     id SERIAL PRIMARY KEY,  
     answer VARCHAR(500) NOT NULL,

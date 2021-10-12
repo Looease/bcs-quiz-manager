@@ -1,9 +1,10 @@
 var {Client} = require('pg');
+require('dotenv').config();
 
 var connection = new Client({
     host:'localhost',
-    user:'louise.gilliganzoopla.co.uk',
-    password:'',
+    user:process.env.USER,
+    password:process.env.PASSWORD,
     database:'quizmanagerdb'
 });
 

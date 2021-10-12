@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS questions;
+
 CREATE TABLE questions(
     id SERIAL PRIMARY KEY,  
     questions VARCHAR(500) NOT NULL UNIQUE,

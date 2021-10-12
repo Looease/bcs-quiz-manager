@@ -1,5 +1,21 @@
-<h1>Quiz Categories</h1>
-<ul>
+<table>
+    <thead>
+    <h1>Quiz Categories</h1>
+    </thead>
+    {{#each quiz}}
+        <tr>
+            <td><a href="">{{this.title}}</a></td>
+            <td><button>Play</button></td>
+            <td><button>View</button></td>
+            <td><button>Edit</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+    {{/each}}
+</table>
+
+
+
+{{!-- <ul>
 <li class="quiz-select">
     <div>Maths</div>         
     <button>Play</button> 
@@ -21,4 +37,5 @@
     <button>Edit</button> 
     <button>Delete</button>
 <li>
-</ul>
+</ul> --}}
+  
