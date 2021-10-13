@@ -1,10 +1,35 @@
-{{!-- <table>
-    <thead>
-        <th>Quiz name</th>
-    </thead>
+<section class="view-questions-container">
+  <ul class="view-question">
+    <h3>Category: </h3>
     {{#each quiz}}
-        <tr>
-            <td><a href="{{this.router.quizStart}}">{{this.title}}</a></td>
-        </tr>
+      <li>
+        {{this.title}}
+      </li>
     {{/each}}
-</table> --}}
+  </ul>
+
+  <ul class="view-question">
+    <h3>Questions</h3>
+    {{#each questions}}
+      <li>
+        {{this.questions}}
+      </li>
+    {{/each}}
+  </ul>
+  <ul class="view-question">
+    <h3>Index</h3>
+     {{#each answerIndex}}
+      <li>
+        {{lookup @root.answerIndex @key}}
+      </li>
+      {{/each}}
+  </ul>
+  <ul class="view-question">
+    <h3>Answers</h3>
+    {{#each answer}}
+      <li>
+        {{this.answer}}
+      </li>
+    {{/each}}
+  </ul>
+</section>

@@ -1,19 +1,20 @@
 var express = require('express');
 var router = express.Router();
-//let usersService = require("../services/usersService")
-//var jwt = require('jsonwebtoken');
+require('dotenv').config();
+let usersService = require("../services/usersService")
+var jwt = require('jsonwebtoken');
 
 module.exports = router;
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('users/login');
-});
+// router.get('/', function(req, res, next) {
+//   res.render('users/login');
+// });
 
 router.get('/login', function(req, res, next) {
   try
   {
-    res.render('users/login');
+    res.render('users/login', {layout: false});
   }
   catch (err) {
     console.log(err);
@@ -36,7 +37,7 @@ router.post('/login', function(req, res, next) {
     process.env.AUTH_SECRET);
     
       res.cookie('token', token);
-      res.redirect('/books');
+      res.redirect('/');
   }
 
   usersService.validateLogin(req.body, onSuccess)

@@ -151,3 +151,10 @@ ul{
 .active{
   background-color: red;
 }
+
+.edit-quiz-container{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:flex-start;
+}

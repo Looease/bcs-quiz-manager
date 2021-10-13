@@ -3,6 +3,28 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var JwtStrategy = require('passport-jwt').Strategy;
+var passport = require('passport');
+var UserService = require('./services/usersService');// this is new
+var CookieExtractor = require('./security/cookieExtractor');
+
+
+var JwtStrategy = require('passport-jwt').Strategy;
+var passport = require('passport');
+var CookieExtractor = require('./security/cookieExtractor');
+
+var opts = {}
+opts.jwtFromRequest = CookieExtractor.cookieExtractor;
+opts.secretOrKey = process.env.AUTH_SECRET;
+
+passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+    UserService.findUser(jwt_payload['user'].username, function(err, user) {
+        if (err) {
+            return done(err, null);
+        }
+        return done(null, user);
+    });
+}));
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -20,6 +42,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(passport.initialize());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -42,5 +66,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

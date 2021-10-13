@@ -6,11 +6,6 @@ function hashPassword(password) {
     const saltRounds = 10;
     return bcrypt.hashSync(password, saltRounds);
 }
-//npm install bcrypt
-//npm install jsonwebtoken
-//npm install dotenv
-//npm install passport-jwt
-//npm install passport
 
 function createUser(user, onSuccess){
     db.query("INSERT INTO users(username, password, role) VALUES($1, $2, $3)", [user.username, hashPassword(user.password), user.role], onSuccess);

@@ -24,7 +24,7 @@ module.exports.getCSQuizQuestionsAnswers = getCSQuizQuestionsAnswers;
 
 ////////////////////////////////////////////////////////////////Create new 
 function createNewQuiz(quizzes, onSuccess){
-    db.query("INSERT INTO quizzes(title) VALUES ('$1')", [quizzes.title], onSuccess)
+    db.query("INSERT INTO quizzes(title) VALUES ($1)", [quizzes.title], onSuccess)
 }
 module.exports.createNewQuiz = createNewQuiz;
 

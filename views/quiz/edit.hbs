@@ -1,0 +1,12 @@
+<table id="buttons-group">
+    <thead>
+    <h1>Edit Quiz</h1>
+    </thead>
+    {{meow}}
+    {{#each quiz}}
+        <tr>
+            <td><input type="checkbox" id="checkbox" name="{{this.title}}" /></td>
+            <td><label>{{this.title}}</label></td>
+        </tr>
+    {{/each}}
+</table>

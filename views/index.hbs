@@ -1,7 +1,46 @@
-<h1>Quiz Manager</h1>
-<h3>Login</h3>
-<form action="/users/login" method="POST" class="login-form">
-    <input type="text" placeholder="username" name="username">
-    <input type="password" placeholder="password" name="password">
-    <button type="submit">Login</button>
-</form>
+<table id="buttons-group">
+    <thead>
+    <h1>Quiz Categories</h1>
+    </thead>
+    {{meow}}
+    {{#each quiz}}
+        <tr>
+            <td>{{this.title}}</td>
+            {{!-- <td><a href="" class="btn">Play</a></td> --}}
+            <td><a href="/quiz" class="btn">View</a></td>
+            <td><a href="/quiz/edit" class="btn">Edit</a></td>
+        </tr>
+    {{/each}}
+</table>
+
+
+<a href="/quiz/new" class="btn">Create new quiz</a>
+
+
+<a href="/quiz/delete" class="btn">Delete Quiz</a>
+
+
+{{!-- <ul>
+<li class="quiz-select">
+    <div>Maths</div>         
+    <button>Play</button> 
+    <button>View</button> 
+    <button>Edit</button> 
+    <button>Delete</button>
+<li>
+<li class="quiz-select">
+    <div>History</div>         
+    <button>Play</button> 
+    <button>View</button> 
+    <button>Edit</button> 
+    <button>Delete</button>
+<li>
+<li class="quiz-select">
+    <div>Computer Science</div>  
+    <button>Play</button> 
+    <button>View</button> 
+    <button>Edit</button> 
+    <button>Delete</button>
+<li>
+</ul> --}}
+  

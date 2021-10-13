@@ -1,31 +1,24 @@
 var express = require('express');
 var router = express.Router();
-var quizService = require('../services/quizService.js')
+let passport = require('passport');
+let editAccess = require('../security/editAccess')
+
+var quizService = require('../services/quizService.js');
 
 module.exports = router;
 
-//Get all quizes
-router.get('/home', function(req, res, next) {
-    function onSuccess(result) {
-        let quiz = result.rows;
-        res.render('quiz/home', {quiz: quiz});
-    }
-     quizService.getAllQuizes(onSuccess);
-});
-
-
-router.get('/view', function(req, res, next) {
+router.get('/', function(req, res, next) {
     function onSuccess(result) {
         let quiz = result.rows;
         let questions = result.rows;
         let answer = result.rows
-        res.render('quiz/view', {quiz: quiz, questions: questions, answer: answer});
+        res.render('quiz/index', {quiz: quiz, questions: questions, answerIndex: ['A','B','C','D','A','B','C','D','A','B','C','D'], answer: answer});
     }
     //if(){
         quizService.getMathsQuizQuestionsAnswers(onSuccess);
     //}
     //else if(){
-      //  quizService.getHistoryQuizQuestionsAnswers(onSuccess);
+      //  quizService.(onSuccess);
     //}
     //else if(activeButton && button.dataset.index === 3){
     //    quizService.getCSQuizQuestionsAnswers(onSuccess); 
@@ -41,7 +34,7 @@ router.get('/new', function(req, res, next) {
 });
 router.post('/', function(req, res) {
     function onSuccess(result) {
-        res.redirect('/home');
+        res.redirect('/');
     }
     quizService.createNewQuiz(req.body, onSuccess)
 });
@@ -60,7 +53,23 @@ router.post('/delete', function(req, res) {
     quizService.deleteQuiz(req.body, onSuccess)
 });
 
+//////////////////////////////// Edit 
+router.get('/edit',passport.authenticate('jwt', { session: false }), editAccess.editAccess, function(req, res, next) {
+    function onSuccess(result) {
+        let quiz = result.rows;
+        res.render('quiz/edit', {quiz: quiz});
+    }
+    quizService.getAllQuizes(onSuccess);
+});
 
+// router.post('/delete', function(req, res) {
+//         //const bookId = parseInt(req.params.bookId)
+//         //console.log(bookId);
+//          function onSuccess(result) {
+//             res.redirect('/quiz/home');
+//     }
+//     quizService.deleteQuiz(req.body, onSuccess)
+// });
 
 
 /* GET quiz start page. */
