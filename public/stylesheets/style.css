@@ -25,6 +25,18 @@ body {
   /* background-color: navy; */
 }
 
+.logo{
+  height: auto;
+  margin-left: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1.5em;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .login-form{
   display: flex;
   flex-direction: column;
@@ -124,6 +136,9 @@ td{
 .hide{
   display: none;
 } 
+#hide{
+  display: none;
+}
 
 ul{
   list-style: none;
@@ -133,20 +148,41 @@ ul{
 }
 
 .view-questions-container{
+  width: 90%;
   height: 2000vh;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
+  justify-content:center;
+  align-items: center;
   border: 1px solid #000;
   overflow: scroll;
 }
 
-.view-question{
+.text-container{
+  list-style: none;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column
+}
+
+/* .view-question{
   display: flex;
   flex-direction: column;
 }
 .view-question li{
   margin: 20px 10px;
 }
+#edit, #save, #delete{
+  display: flex;
+  flex-direction: column;
+} */
+
+/* .edit-delete{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+} */
 
 .active{
   background-color: red;
@@ -157,4 +193,13 @@ ul{
   flex-direction: row;
   justify-content:flex-start;
   align-items:flex-start;
+}
+
+.btn-container{
+  display: flex;
+  flex-direction: row;
+}
+.btns{
+  display: flex;
+  flex-direction: column;
 }

@@ -7,25 +7,19 @@ var quizService = require('../services/quizService.js');
 
 module.exports = router;
 
-router.get('/', function(req, res, next) {
+router.get('/:title', function(req, res, next) {
     function onSuccess(result) {
         let quiz = result.rows;
         let questions = result.rows;
         let answer = result.rows
-        res.render('quiz/index', {quiz: quiz, questions: questions, answerIndex: ['A','B','C','D','A','B','C','D','A','B','C','D'], answer: answer});
+        res.render('quiz/index', {
+            quiz: quiz, 
+            questions: questions, 
+            answerIndex: ['A','B','C','D','A','B','C','D','A','B','C','D'], 
+            answer: answer,
+        });
     }
-    //if(){
-        quizService.getMathsQuizQuestionsAnswers(onSuccess);
-    //}
-    //else if(){
-      //  quizService.(onSuccess);
-    //}
-    //else if(activeButton && button.dataset.index === 3){
-    //    quizService.getCSQuizQuestionsAnswers(onSuccess); 
-    //}
-    //else{
-     //   console.log('Error')
-    //}
+        quizService.getQuizQuestionsAndAnswers(req.params.title, onSuccess);
 });
 
 /* Create new quiz */
@@ -54,13 +48,55 @@ router.post('/delete', function(req, res) {
 });
 
 //////////////////////////////// Edit 
-router.get('/edit',passport.authenticate('jwt', { session: false }), editAccess.editAccess, function(req, res, next) {
+router.get('/edit/:title',passport.authenticate('jwt', { session: false }), function(req, res, next) {
     function onSuccess(result) {
         let quiz = result.rows;
-        res.render('quiz/edit', {quiz: quiz});
+        let id = result.rows;
+        let questions = result.rows;
+        //let quizid = result.rows;
+        //let answer = result.rows;
+        let questionid = result.rows;
+        res.render('quiz/edit', {
+            quiz: quiz, 
+            id: id,
+            questions: questions, 
+            title: 'title',
+            //quizid: quizid, 
+            //answer: answer,
+            questionId: questionid            
+        });
     }
-    quizService.getAllQuizes(onSuccess);
+    //quizService.getAllData(onSuccess);
+    quizService.getQuestions(req.params.title, onSuccess)
 });
+
+// router.get('/answer/:title', function(req, res, next) {
+//     res.render('quiz/answer');
+// });
+
+router.get('/answer/:id',passport.authenticate('jwt', { session: false }), editAccess.editAccess, function(req, res, next) {
+    function onSuccess(result) {
+        let quiz = result.rows;
+        let id = result.rows;
+        let questions = result.rows;
+        let quizid = result.rows;
+        let answer = result.rows;
+        let questionid = result.rows;
+        res.render('quiz/answer', {
+            quiz: quiz, 
+            id: id,
+            questions: questions, 
+            quizid: quizid, 
+            answer: answer,
+            questionId: questionid            
+        });
+    }
+    //quizService.getAllData(onSuccess);
+    quizService.getAnswers(req.params.id, onSuccess)
+});
+
+
+
 
 // router.post('/delete', function(req, res) {
 //         //const bookId = parseInt(req.params.bookId)

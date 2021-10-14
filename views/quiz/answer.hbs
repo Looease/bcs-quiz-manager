@@ -1,0 +1,19 @@
+<table id="buttons-group">
+    <thead>
+    <h1>Edit Answers</h1>
+    </thead>
+    {{meow}}
+    {{#each answers}}
+        <tr>
+            <td>{{this.answer}}</td>
+            <td><a href="" class="btn" data-id="{{this.id}}">Edit</a></td>
+            <td><a href="" class="btn" data-id="{{this.id}}">Save</a></td>
+            <td><a href="" class="btn" data-id="{{this.id}}">Delete</a></td>
+        </tr>
+    {{/each}}
+</table>
+</ul>
+  <ul class="create-btns">
+    <li><a href="" class="btn">Create new answer</a></li>
+</ul>
+

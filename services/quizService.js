@@ -5,30 +5,61 @@ function getAllQuizes(onSuccess) {
 }
 module.exports.getAllQuizes = getAllQuizes;
 
-function getMathsQuizQuestionsAnswers(onSuccess) {
-    db.query("SELECT * FROM quizzes JOIN questions ON questions.quizid = quizzes.id  JOIN answers on answers.questionid = questions.id WHERE quizzes.title = 'Maths'", [], onSuccess);
+function getAllData(onSuccess) {
+    db.query("SELECT * FROM quizzes JOIN questions ON questions.quizid = quizzes.id  JOIN answers on answers.questionid = questions.id", [], onSuccess);
 }
-module.exports.getMathsQuizQuestionsAnswers = getMathsQuizQuestionsAnswers;
+module.exports.getAllData = getAllData;
 
-function getHistoryQuizQuestionsAnswers(onSuccess) {
-    db.query("SELECT * FROM quizzes JOIN questions ON questions.quizid = quizzes.id  JOIN answers on answers.questionid = questions.id WHERE quizzes.title = 'History'", [], onSuccess);
+function getQuizQuestionsAndAnswers(title, onSuccess) {
+    db.query("SELECT * FROM quizzes JOIN questions ON questions.quizid = quizzes.id  JOIN answers on answers.questionid = questions.id WHERE quizzes.title = ($1)", [title], onSuccess);
 }
-module.exports.getHistoryQuizQuestionsAnswers = getHistoryQuizQuestionsAnswers;
+module.exports.getQuizQuestionsAndAnswers = getQuizQuestionsAndAnswers;
 
+////////////////////////////////Edit
 
-function getCSQuizQuestionsAnswers(onSuccess) {
-    db.query("SELECT * FROM quizzes JOIN questions ON questions.quizid = quizzes.id  JOIN answers on answers.questionid = questions.id WHERE quizzes.title = 'Computer Science'", [], onSuccess);
+function getQuestions(id, onSuccess) {
+    db.query("SELECT questions from questions WHERE quizid = ($1)", [id], onSuccess);
 }
-module.exports.getCSQuizQuestionsAnswers = getCSQuizQuestionsAnswers;
+module.exports.getQuestions = getQuestions;
+
+function getAnswers(id, onSuccess) {
+    db.query("SELECT * FROM answers JOIN questions ON answers.questionid = ($1)", [id.id], onSuccess);
+}
+module.exports.getAnswers = getAnswers;
 
 
-////////////////////////////////////////////////////////////////Create new 
+////////////////////////////////Delte Question 
+function deleteQuestion(questions, onSuccess) {
+    db.query("DELETE FROM questions where questions VALUES ($1)", [questions.questions], onSuccess)
+}
+module.exports.deleteQuestion = deleteQuestion;
+
+////////////////////////////////Create Question
+function createQuestion(questions, onSuccess){
+    db.query("INSERT INTO questions(questions) VALUES ($1)", [questions.questions], onSuccess);
+}
+module.exports.createQuestion = createQuestion;
+
+////////////////////////////////Delete Answer
+function deleteAnswer(answer, onSuccess) {
+    db.query("DELETE FROM answers WHERE answer VALUES ($1)", [answer.answer], onSuccess);
+}
+module.exports.deleteAnswer = deleteAnswer;
+
+////////////////////////////////Create Answers
+function createAnswer(answers, onSuccess){
+    db.query("INSERT INTO answers WHERE answer VALUES ($1, $2)"), [answers.answer, answers.correct], onSuccess
+}
+module.exports.createAnswer = createAnswer;
+
+
+////////////////////////////////////////////////////////////////Create new quiz
 function createNewQuiz(quizzes, onSuccess){
-    db.query("INSERT INTO quizzes(title) VALUES ($1)", [quizzes.title], onSuccess)
+    db.query("INSERT INTO quizzes(title) VALUES ($1)", [quizzes.title], onSuccess);
 }
 module.exports.createNewQuiz = createNewQuiz;
 
-//////////////////////////////// DeleteBook
+//////////////////////////////// Delete Quiz
 function deleteQuiz(quizzes, onSuccess) {
     db.query('DELETE FROM quizzes WHERE "title" = ($1)', [quizzes.title], onSuccess);
 }

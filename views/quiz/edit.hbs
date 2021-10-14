@@ -1,12 +1,120 @@
 <table id="buttons-group">
     <thead>
-    <h1>Edit Quiz</h1>
+    <h1>Edit Questions</h1>
     </thead>
-    {{meow}}
-    {{#each quiz}}
+    {{this.title}}
+    {{#each questions}}
         <tr>
-            <td><input type="checkbox" id="checkbox" name="{{this.title}}" /></td>
-            <td><label>{{this.title}}</label></td>
+            <td>{{this.id}}</td>
+            <td id="text-row">{{this.questions}}</td>
+            <td><a id="edit-btn" class="btn" onclick="edit_row()" data-id="{{this.id}}">Edit</a></td>
+            <td><a id="save-btn" class="btn" data-id="{{this.id}}">Save</a></td>
+            <td><a href="" class="btn" data-id="{{this.id}}">Delete</a></td>
+            <td><a href="/quiz/answer/{{this.id}}" class="btn" data-id="{{this.id}}">Edit Answer</a></td>
         </tr>
     {{/each}}
 </table>
+</ul>
+  <ul class="create-btns">
+    <li><a href="/quiz/new" class="btn">Create new question</a></li>
+</ul>
+
+
+
+
+
+{{!-- <section class="view-questions-container">
+<ul class="text-container">
+  {{#each questions}}
+  <li id="question" data="{{this.id}}">
+    {{this.questions}}
+  </li>
+  {{/each}}
+</ul>
+<ul class="btn-container">
+  <ul class="btns">
+    <li></li>
+      {{#each questions}}
+        <a href="quiz/edit-answer/{{this.id}}" class="btn">Edit</a>
+      {{/each}}
+    </li>
+  </ul>
+<ul class="btns">
+    <li></li>
+      {{#each questions}}
+        <a href="quiz/edit-answer/{{this.id}}" class="btn">Save</a>
+      {{/each}}
+    </li>
+  </ul>
+    <ul class="btns">
+    <li></li>
+      {{#each questions}}
+        <a href="quiz/edit-answer/{{this.id}}" class="btn">Delete</a>
+      {{/each}}
+    </li>
+  </ul>
+    <ul class="btns">
+    <li></li>
+      {{#each questions}}
+        <a href="quiz/edit-answer/{{this.id}}" class="btn">Edit Answers</a>
+      {{/each}}
+    </li>
+  </ul>
+
+</section> --}}
+
+
+
+
+
+
+{{!-- <section class="view-questions-container">
+<ul class="view-question"> --}}
+    {{!-- <h3>Category: </h3>
+    {{#each quiz}}
+      <li id="quiz" data="{{this.id}}" data-id={{this.id}}>
+        {{this.title}}
+      </li>
+    {{/each}}
+  </ul> --}}
+   {{!-- <ul class="view-question">
+    <h3>Questions</h3>
+    {{#each questions}}
+      <li id="question" data="{{this.id}}" data-id={{this.quizid}}>
+        {{this.questions}}
+      </li>
+    {{/each}}
+  </ul>
+    <ul class="view-question">
+    <h3>Edit</h3>
+    {{#each answer}}
+      <a id="edit" class="btn" href="quiz/edit-question-answer/{{this.id}}">
+        Edit
+      </a> 
+    {{/each}} --}}
+    {{!-- <ul class="view-question"> --}}
+    {{!-- <h3>Answers</h3>
+    {{#each answer}}
+      <li id="answer" data-id={{this.questionid}}>
+        {{this.answer}}
+      </li>
+    {{/each}}  
+       </ul> --}}
+  {{!-- <ul class="view-question">
+    <h3>Edit</h3>
+    {{#each answer}}
+      <a id="edit" class="btn" href="quiz/edit-question-answer/{{this.id}}">
+        Edit
+      </a> 
+    {{/each}}
+  </ul>
+   <ul class="view-question">
+    <h3>Delete</h3>
+    <li id="delete">
+    </li>
+  </ul>
+   <ul class="view-question">
+    <h3>Save</h3>
+    <li id="save">
+    </li>
+  </ul> --}}

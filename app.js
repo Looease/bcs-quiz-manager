@@ -30,6 +30,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 //var homeRouter = require('./routes/home'); // this is ne
 var quizRouter = require('./routes/quiz'); // this is new
+var editRouter = require('./routes/manage'); // this is new
 
 var app = express();
 
@@ -49,6 +50,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //app.use('/home', homeRouter); // this is new
 app.use('/quiz', quizRouter); // this is new
+app.use('/manage', editRouter); // this is new
 
 
 // catch 404 and forward to error handler

@@ -24,7 +24,8 @@
       </li>
       {{/each}}
   </ul>
-  <ul class="view-question">
+  {{!-- {{#if user.admin}} --}}
+  <ul class="view-question" id="admin-answers">
     <h3>Answers</h3>
     {{#each answer}}
       <li>
@@ -32,4 +33,7 @@
       </li>
     {{/each}}
   </ul>
+     {{!-- {{else}}
+    <li></li>
+    {{/if}} --}}
 </section>

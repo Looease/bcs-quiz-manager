@@ -6,11 +6,6 @@ var jwt = require('jsonwebtoken');
 
 module.exports = router;
 
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.render('users/login');
-// });
-
 router.get('/login', function(req, res, next) {
   try
   {
@@ -25,7 +20,10 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
   function onSuccess(success, user) {
     if (!success) {
-      res.render('error', { message: 'No valid user', error: {title: 'User not recognised', message: ''} });
+      res.render('error', { 
+        message: 'No valid user', 
+        layout: false,
+        error: {title: 'User not recognised', message: ''} });
       return;
     } 
     const token = jwt.sign({ 
@@ -39,6 +37,5 @@ router.post('/login', function(req, res, next) {
       res.cookie('token', token);
       res.redirect('/');
   }
-
   usersService.validateLogin(req.body, onSuccess)
 });
