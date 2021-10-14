@@ -9,7 +9,7 @@ let restrictedAccess = require('../security/restrictedAccess');
 module.exports = router;
 
 //Get all quizes
-router.get('/', passport.authenticate('jwt', { session: false }),  function(req, res, next) {
+router.get('/', passport.authenticate('jwt', { session: false }),[editAccess.editAccess],  function(req, res, next) {
   function onSuccess(result) {
       let quiz = result.rows;
       res.render('index', {

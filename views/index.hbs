@@ -1,9 +1,10 @@
+   {{#if user.admin}}
 <table id="buttons-group">
     <thead>
     <h1>Quiz Categories</h1>
     </thead>
     {{meow}}
-    {{!-- {{#if user.admin}} --}}
+ 
     {{#each quiz}}
         <tr>
             <td>{{this.title}}</td>
@@ -17,17 +18,22 @@
 <ul class="btn-container">
     <li><a href="/manage/delete/" class="btn" data-id="{{this.id}}">Delete</a></li>
     <li><a href="/quiz/new" class="btn">Create new quiz</a></li>
-</ul>    
-    {{!-- {{else}} --}}
-    {{!-- {{#each quiz}} --}}
-         {{!-- <tr>
+    {{else}}
+   <table id="buttons-group">
+    <thead>
+    <h1>Quiz Categories</h1>
+    </thead>
+    {{meow}}
+ 
+    {{#each quiz}}
+        <tr>
             <td>{{this.title}}</td>
             <td><a href="/quiz/{{this.title}}" class="btn" data-id="{{this.id}}">View</a></td>    
      {{/each}}        
         </tr>
    
 </table>
-{{!-- {{/if}} --}}
+{{/if}}
 
 
 
