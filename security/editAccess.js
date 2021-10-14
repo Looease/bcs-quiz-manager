@@ -8,9 +8,3 @@ var editAccess = (req, res, next) => {
 
 module.exports.editAccess = editAccess;
 
-// var permission = (req, res, next) => {
-//     if (req.user && req.user.role !== 'admin' || 'view'){
-        
-//     }
-// }
-

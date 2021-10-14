@@ -6,6 +6,11 @@ var jwt = require('jsonwebtoken');
 
 module.exports = router;
 
+/* GET users listing. */
+// router.get('/', function(req, res, next) {
+//   res.render('users/login');
+// });
+
 router.get('/login', function(req, res, next) {
   try
   {
@@ -37,5 +42,6 @@ router.post('/login', function(req, res, next) {
       res.cookie('token', token);
       res.redirect('/');
   }
+
   usersService.validateLogin(req.body, onSuccess)
 });

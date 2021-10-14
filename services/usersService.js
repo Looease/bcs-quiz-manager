@@ -49,3 +49,8 @@ function findUser(username, onSuccess) {
         db.query("SELECT role FROM users", [], onSuccess)
     }
     module.exports.getRole = getRole;
+
+    function getUserLevel(username, onSuccess) {
+        db.query("SELECT role FROM users WHERE username = ($1)", [username], onSuccess)
+    }
+    module.exports.getUserLevel = getUserLevel;

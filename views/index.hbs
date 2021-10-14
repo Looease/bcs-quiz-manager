@@ -1,10 +1,13 @@
-   {{!-- {{#if user.admin}} --}}
+  <p>7777777{{isAdmin}}</p> 
+  {{hello}}
+
+   {{#if isAdmin}}
 <table id="buttons-group">
     <thead>
     <h1>Quiz Categories</h1>
     </thead>
-    {{meow}}
- 
+    <h2>You are a admin</h2>
+     
     {{#each quiz}}
         <tr>
             <td>{{this.title}}</td>
@@ -18,22 +21,41 @@
 <ul class="btn-container">
     <li><a href="/manage/delete/" class="btn" data-id="{{this.id}}">Delete</a></li>
     <li><a href="/manage/new" class="btn">Create new quiz</a></li>
-    {{!-- {{else}}
+   </ul>
+   {{/if}}  
+    {{#if isView}}
+   <table id="buttons-group">
+    <thead>
+    <h1>Quiz Categories</h1>
+    </thead>
+    <h2>You are a viewer</h2>
+    
+    {{#each quiz}}
+        <tr>
+            <td>{{this.title}}</td>
+            <td><a href="/questions/{{this.title}}" class="btn" data-id="{{this.id}}">View</a></td>    
+     {{/each}}        
+        </tr>  
+</table>
+ {{/if}} 
+{{#if isRestricted}}
    <table id="buttons-group">
     <thead>
     <h1>Quiz Categories</h1>
     </thead>
     {{meow}}
- 
+
+    <h2>You restricted</h2>
     {{#each quiz}}
         <tr>
             <td>{{this.title}}</td>
-            <td><a href="/quiz/{{this.title}}" class="btn" data-id="{{this.id}}">View</a></td>    
+            <td><a href="/questions/questionsOnly/{{this.id}}" class="btn" data-id="{{this.id}}">View</a></td>    
      {{/each}}        
-        </tr>
-   
+        </tr>  
 </table>
-{{/if}} --}}
+       
+    
+{{/if}} 
 
 
 

@@ -19,6 +19,7 @@ router.get('/:title', function(req, res, next) {
             answer: answer,
         });
     }
+        console.log(req)
         quizService.getQuizQuestionsAndAnswers(req.params.title, onSuccess);
 });
 
@@ -35,12 +36,25 @@ router.get('/edit/:title',passport.authenticate('jwt', { session: false }), func
             quiz: quiz, 
             id: id,
             questions: questions, 
-            title: 'title',
             //quizid: quizid, 
             //answer: answer,
             questionId: questionid            
         });
     }
+    console.log(title)
     //quizService.getAllData(onSuccess);
     quizService.getQuestions(req.params.title, onSuccess)
 });
+
+router.get('/questionsOnly/:id', passport.authenticate('jwt', { session: false }),  function(req, res, next) {
+    function onSuccess(result) {
+        let quiz = result.rows;
+        let questions = result.rows;
+        res.render('questions/questionsOnly', {
+            quiz: quiz,
+            questions: questions,
+        });
+    }
+     console.log(req)
+     quizService.getQuestions(req.params.id, onSuccess);
+  });
