@@ -1,0 +1,30 @@
+  <section class="view-questions-container">
+  <ul class="view-question">
+    <h3>Questions</h3>
+    {{#each questions}}
+      <li>
+        {{this.questions}}
+      </li>
+    {{/each}}
+  </ul>
+  <ul class="view-question">
+    <h3>Index</h3>
+     {{#each answerIndex}}
+      <li>
+        {{lookup @root.answerIndex @key}}
+      </li>
+      {{/each}}
+  </ul>
+  {{!-- {{#if user.admin}} --}}
+  <ul class="view-question" id="admin-answers">
+    <h3>Answers</h3>
+    {{#each answer}}
+      <li>
+        {{this.answer}}
+      </li>
+    {{/each}}
+  </ul>
+     {{!-- {{else}}
+    <li></li>
+    {{/if}} --}}
+</section>

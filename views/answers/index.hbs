@@ -5,6 +5,8 @@
     {{meow}}
     {{#each answers}}
         <tr>
+            <td class="key-margin">{{lookup @root.answerIndex @key}}:</td>
+            <br/>
             <td>{{this.answer}}</td>
             <td><a href="" class="btn" data-id="{{this.id}}">Edit</a></td>
             <td><a href="" class="btn" data-id="{{this.id}}">Save</a></td>

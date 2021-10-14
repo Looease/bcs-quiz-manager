@@ -1,4 +1,4 @@
-   {{#if user.admin}}
+   {{!-- {{#if user.admin}} --}}
 <table id="buttons-group">
     <thead>
     <h1>Quiz Categories</h1>
@@ -9,16 +9,16 @@
         <tr>
             <td>{{this.title}}</td>
             {{!-- <td><a href="" class="btn">Play</a></td> --}}
-            <td><a href="/quiz/{{this.title}}" class="btn" data-id="{{this.id}}">View</a></td>    
-            <td><a href="/quiz/edit/{{this.id}}" class="btn" data-id="{{this.id}}">Edit</a></td>
+            <td><a href="/questions/{{this.title}}" class="btn" data-id="{{this.id}}">View</a></td>    
+            <td><a href="/questions/edit/{{this.id}}" class="btn" data-id="{{this.id}}">Edit</a></td>
      {{/each}}        
         </tr>
    
 </table>
 <ul class="btn-container">
     <li><a href="/manage/delete/" class="btn" data-id="{{this.id}}">Delete</a></li>
-    <li><a href="/quiz/new" class="btn">Create new quiz</a></li>
-    {{else}}
+    <li><a href="/manage/new" class="btn">Create new quiz</a></li>
+    {{!-- {{else}}
    <table id="buttons-group">
     <thead>
     <h1>Quiz Categories</h1>
@@ -33,7 +33,7 @@
         </tr>
    
 </table>
-{{/if}}
+{{/if}} --}}
 
 
 

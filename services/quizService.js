@@ -18,14 +18,14 @@ module.exports.getQuizQuestionsAndAnswers = getQuizQuestionsAndAnswers;
 ////////////////////////////////Edit
 
 function getQuestions(id, onSuccess) {
-    db.query("SELECT questions from questions WHERE quizid = ($1)", [id], onSuccess);
+    db.query("SELECT * from questions WHERE quizid = ($1)", [id], onSuccess);
 }
 module.exports.getQuestions = getQuestions;
 
 function getAnswers(id, onSuccess) {
-    db.query("SELECT * FROM answers JOIN questions ON answers.questionid = ($1)", [id.id], onSuccess);
+    db.query("SELECT * FROM answers JOIN questions ON answers.questionid = questions.id WHERE questions.id = ($1)", [id], onSuccess);
 }
-module.exports.getAnswers = getAnswers;
+    module.exports.getAnswers = getAnswers;
 
 
 ////////////////////////////////Delte Question 
@@ -64,4 +64,3 @@ function deleteQuiz(quizzes, onSuccess) {
     db.query('DELETE FROM quizzes WHERE "title" = ($1)', [quizzes.title], onSuccess);
 }
 module.exports.deleteQuiz = deleteQuiz;
-

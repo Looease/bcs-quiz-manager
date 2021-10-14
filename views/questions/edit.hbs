@@ -1,0 +1,29 @@
+<table id="buttons-group">
+    <thead>
+    <h1>Edit Questions</h1>
+    </thead>
+    {{quizzes.title}}
+    {{#each questions}}
+        <tr>
+            <td id="text-row">{{this.questions}}</td>
+            <td><a id="edit-btn" class="btn" onclick="edit_row()" data="{{this.id}}">Edit</a></td>
+            <td><a id="save-btn" class="btn" data-id="{{this.id}}">Save</a></td>
+            <td><a href="" class="btn" data-id="{{this.id}}">Delete</a></td>
+            <td><a href="/answers/answer/{{this.id}}" class="btn" data-id="{{this.id}}">Edit Answer</a></td>
+        </tr>
+    {{/each}}
+</table>
+</ul>
+  <ul class="create-btns">
+    <li><a href="/quiz/new" class="btn">Create new question</a></li>
+</ul>
+
+{{!-- <section class="view-questions-container">
+  <ul class="view-question">
+    <h3>Category: </h3>
+    {{#each quiz}}
+      <li>
+        {{this.title}}
+      </li>
+    {{/each}}
+  </ul> --}}

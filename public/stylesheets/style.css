@@ -203,3 +203,6 @@ ul{
   display: flex;
   flex-direction: column;
 }
+.key-margin{
+  padding: 20px;
+}
