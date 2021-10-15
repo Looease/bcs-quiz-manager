@@ -2,42 +2,42 @@
     <h1>Edit Answers</h1>
     <th>Index</th>
     <th>Answer</th>
-    <th>Question Id</th>
     {{#each answers}}
         <tr>
             <td class="key-margin">{{lookup @root.answerIndex @key}}:</td>
             <br/>
             <td>{{this.answer}}</td>
-            <td>{{this.questionid}}</td>
         </tr>
     {{/each}}
 </table>
 </ul>
 <section class="update-container">
 <ul>
-{{!-- <h1>Update Answer</h1>
-<form action="/answer" method="POST" target="_blank">
-    <input type="text" placeholder="Answer" name="title">
+<h1>Update Answer</h1>
+<form action="/answers/updated" method="POST">
+    <input type="text" placeholder="Answer to change" name="answer">
+    <input type="text" name="answer" placeholder="New Answer">
     <button class="btn"  type="submit">Submit</button>
 </form> 
-</ul>--}}
+</ul>
 <ul>
-    <a href="/answers" class="btn">New Answer</a>
 <h1>New Answer</h1>
-<form action="/answers-louise" method="POST">
+<form action="/answers-new" method="POST">
     <input type="text" placeholder="Answer" name="answer">
-    <input type="hidden" name="questionid" value="{{{answers.1.questionid}}}">
-    <input type="text" placeholder="Correct" name="correct">
+    False
+    <input type="radio" placeholder="False" value="{{false}}"name="correct">
+    True
+    <input type="radio" placeholder="Correct" value="{{true}}"name="correct"> 
+    <input type="number" name="questionid" value="{{{answers.1.questionid}}}">
     <button class="btn"  type="submit">Submit</button>
 </form>
 </ul> 
-{{!-- <ul>
+<ul>
 <h1>Delete Answer</h1>
-<form action="/answer3" method="POST">
-    <label type="text" placeholder="Answer" name="answer"}/>
-    <input type="text" name="">
-    </label>
+<form action="/answers/delete" method="POST">
+    <input type="text" placeholder="Answer "name="answer">
     <button class="btn" type="submit">Delete</button>
 </form>
-</ul> --}}
+
+</ul>
 </section>

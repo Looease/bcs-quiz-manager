@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS answers;
 CREATE TABLE answers(
     id SERIAL PRIMARY KEY,  
     answer VARCHAR(500) NOT NULL,
-    correct bool NOT NULL,
+    correct bool,
     questionid INT,
     CONSTRAINT fk_answers_to_question FOREIGN KEY (questionid) REFERENCES questions(id)
 );

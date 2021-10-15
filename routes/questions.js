@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var editAccess = require('../security/editAccess');
-var viewAccess = require('../security/viewAccess');
-var restrictedAccess = require('../security/restrictedAccess');
 var quizService = require('../services/quizService.js');
 
 module.exports = router;
@@ -38,16 +35,12 @@ router.get('/questionsOnly/:id', passport.authenticate('jwt', { session: false }
 router.get('/edit/:id',passport.authenticate('jwt', { session: false }), function(req, res, next) {
     function onSuccess(result) {
         let quiz = result.rows;
-        //let id = result.id;
         let questions = result.rows;
-        //let quizid = questions.quizid;
         let answer = result.rows;
         let questionid = result.rows;
         res.render('questions/edit', {
             quiz: quiz, 
-            //id: id,
             questions: questions, 
-            //quizid: quizid, 
             answer: answer,
             questionId: questionid,           
         });
@@ -62,23 +55,3 @@ router.get('/new', function(req, res, next) {
 router.get('/delete', function(req, res, next) {
     res.render('/questions/delete');
 });
-
-
-router.post('/', function(req, res) {
-    function onSuccess(result) {
-        res.redirect('/questions/edit');
-    }
-    quizService.createQuestion(req.body, onSuccess)
-});
-/////ADD QUESTION
-
-// router.get('/addQuestion', function(req, res, next) {
-//     //function onSuccess(result) {
-//         res.render('/questions/addQuestion');
-//     //}
-//  // quizService.getQuizid(req.params.id, onSuccess) 
-// });
-
-
-////Delete Question
-

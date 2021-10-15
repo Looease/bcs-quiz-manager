@@ -1,14 +1,13 @@
 <table id="buttons-group">
     <thead>
     <h1>Edit Questions</h1>
+    <th>Id</th>
     <th>Question</th>
-    <th>Quiz Id</th>
     </thead>
-    {{!-- {{quizzes.title}} --}}
     {{#each questions}}
         <tr>
+            <td>{{this.id}}</td>
             <td id="text-row">{{this.questions}}</td>
-            <td id="text-row">{{this.quizid}}</td>
             <td><a href="/answers/answer/{{this.id}}" class="btn" data-id="{{this.id}}">Edit Answers</a></td>
         </tr>
     {{/each}}
@@ -17,23 +16,24 @@
 <section class="update-container">
 <ul>
 <h1>Update Question</h1>
-<form action="/quiz" method="POST" target="_blank">
-    <input type="text" placeholder="Question" name="question">
+<form action="/questions-updated" method="POST">
+    <input type="text" placeholder="Old question" name="questions">
+    <input type="text" placeholder="New question" name="questions">
     <button class="btn"  type="submit">Update</button>
 </form>
 </ul>
 <ul>
 <h1>New Question</h1>
-<form action="/quiz" method="POST" target="_blank">
-    <input type="text" placeholder="Question" name="question">
-    <input type="text" placeholder="Question" name="quizid">
+<form action="/questions-new" method="POST" target="_blank">
+    <input type="text" placeholder="Question" name="questions">
+    <input type="text" placeholder={{questions.1.quizid}} name="quizid">
     <button class="btn"  type="submit">Create</button>
 </form>
 </ul>
 <ul>
 <h1>Delete Question</h1>
-<form action="/questions" method="POST">
-    <input type="text" placeholder="Question" name="question">
+<form action="/questions/delete" method="POST">
+    <input type="text" placeholder="Question ID" name="id">
     <button class="btn" type="submit">Delete</button>
 </form>
 </ul>

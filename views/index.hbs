@@ -4,7 +4,6 @@
     <h1>Quiz Categories</h1>
     </thead>
     <h2>You are an admin</h2>
-    {{quiz.0.title}}
     {{#each quiz}}
         <tr>
             <td>{{this.title}}</td>
@@ -16,6 +15,7 @@
    
 </table>
 <ul class="btn-container">
+    <li><a href="/quiz/edit/" class="btn" data-id="{{this.id}}">Update a Quiz</a></li>
     <li><a href="/quiz/delete/" class="btn" data-id="{{this.id}}">Delete</a></li>
     <li><a href="/quiz/new" class="btn">Create new quiz</a></li>
    </ul>
@@ -42,7 +42,7 @@
     </thead>
     {{meow}}
 
-    <h2>You restricted</h2>
+    <h2>You are a restricted viewer</h2>
     {{#each quiz}}
         <tr>
             <td>{{this.title}}</td>
