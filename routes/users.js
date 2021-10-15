@@ -1,15 +1,10 @@
 var express = require('express');
 var router = express.Router();
 require('dotenv').config();
-let usersService = require("../services/usersService")
+var usersService = require("../services/usersService")
 var jwt = require('jsonwebtoken');
 
 module.exports = router;
-
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.render('users/login');
-// });
 
 router.get('/login', function(req, res, next) {
   try
@@ -36,12 +31,18 @@ router.post('/login', function(req, res, next) {
         username: user.username
       }
     },
-    // Your secret, e.g. here set by environment variable
     process.env.AUTH_SECRET);
     
       res.cookie('token', token);
       res.redirect('/');
   }
-
   usersService.validateLogin(req.body, onSuccess)
 });
+
+router.get('/logout', function(req, res){
+    req.destroy(function() {
+    res.clearCookie('connect.sid');
+    res.redirect('/users/login');
+  });
+});
+ 

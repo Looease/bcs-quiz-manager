@@ -1,7 +1,29 @@
-<h1>Quiz Manager</h1>
-<h3>Login</h3>
-<form action="/users/login" method="POST" class="login-form">
-    <input type="text" placeholder="username" name="username">
-    <input type="password" placeholder="password" name="password">
-    <button type="submit">Login</button>
-</form>
+<style>
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: system-ui
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    margin: 20px;
+}
+</style>
+
+<body>
+  <section class="">
+    <h1>Quiz Manager</h1>
+    <h3>Login</h3>
+    <form action="/users/login" method="POST" class="login-form">
+      <input type="text" placeholder="username" name="username" />
+      <input type="password" placeholder="password" name="password" />
+      <button type="submit">Login</button>
+    </form>
+  </section>
+</body>

@@ -5,17 +5,10 @@ function getAllQuizes(onSuccess) {
 }
 module.exports.getAllQuizes = getAllQuizes;
 
-function getAllData(onSuccess) {
-    db.query("SELECT * FROM quizzes JOIN questions ON questions.quizid = quizzes.id  JOIN answers on answers.questionid = questions.id", [], onSuccess);
-}
-module.exports.getAllData = getAllData;
-
 function getQuizQuestionsAndAnswers(title, onSuccess) {
     db.query("SELECT * FROM quizzes JOIN questions ON questions.quizid = quizzes.id  JOIN answers on answers.questionid = questions.id WHERE quizzes.title = ($1)", [title], onSuccess);
 }
 module.exports.getQuizQuestionsAndAnswers = getQuizQuestionsAndAnswers;
-
-////////////////////////////////Edit
 
 function getQuestions(id, onSuccess) {
     db.query("SELECT * from questions WHERE quizid = ($1)", [id], onSuccess);
@@ -29,27 +22,35 @@ function getAnswers(id, onSuccess) {
 
 
 ////////////////////////////////Delte Question 
-function deleteQuestion(questions, onSuccess) {
-    db.query("DELETE FROM questions where questions VALUES ($1)", [questions.questions], onSuccess)
+function deleteQuestion(id, onSuccess) {
+    db.query("DELETE FROM questions where questions VALUES ($1)", [id], onSuccess)
 }
 module.exports.deleteQuestion = deleteQuestion;
 
 ////////////////////////////////Create Question
+
+function getQuizid(id, onSuccess) {
+    db.query("SELECT quizid FROM questions WHERE quizid = ($1)", [id], onSuccess)
+}
+module.exports.getQuizid = getQuizid;
+
 function createQuestion(questions, onSuccess){
-    db.query("INSERT INTO questions(questions) VALUES ($1)", [questions.questions], onSuccess);
+    db.query("INSERT INTO questions(questions) VALUES ($1)", [questions.question, questions.quizid], onSuccess);
 }
 module.exports.createQuestion = createQuestion;
 
 ////////////////////////////////Delete Answer
 function deleteAnswer(answer, onSuccess) {
-    db.query("DELETE FROM answers WHERE answer VALUES ($1)", [answer.answer], onSuccess);
+    db.query("DELETE FROM answers WHERE answer = ($1)", [answer.answer], onSuccess);
 }
 module.exports.deleteAnswer = deleteAnswer;
 
 ////////////////////////////////Create Answers
 function createAnswer(answers, onSuccess){
-    db.query("INSERT INTO answers WHERE answer VALUES ($1, $2)"), [answers.answer, answers.correct], onSuccess
+    console.log('Louise', answers.answer)
+    db.query("INSERT INTO answers(answer, correct, questionid) VALUES($1, $2, $3)"), [answers.answer, answers.questionid, answers.correct], onSuccess
 }
+
 module.exports.createAnswer = createAnswer;
 
 

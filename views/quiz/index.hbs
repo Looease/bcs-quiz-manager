@@ -2,7 +2,7 @@
   <ul class="view-question">
     <h3>Category: </h3>
     {{#each quiz}}
-      <li>
+      <li class="qs">
         {{this.title}}
       </li>
     {{/each}}
@@ -11,7 +11,7 @@
   <ul class="view-question">
     <h3>Questions</h3>
     {{#each questions}}
-      <li>
+      <li class="qs">
         {{this.questions}}
       </li>
     {{/each}}
@@ -19,7 +19,7 @@
   <ul class="view-question">
     <h3>Index</h3>
      {{#each answerIndex}}
-      <li>
+      <li class="qs">
         {{lookup @root.answerIndex @key}}
       </li>
       {{/each}}
@@ -28,7 +28,7 @@
   <ul class="view-question" id="admin-answers">
     <h3>Answers</h3>
     {{#each answer}}
-      <li>
+      <li class="qs">
         {{this.answer}}
       </li>
     {{/each}}

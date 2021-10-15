@@ -1,63 +1,41 @@
 *::before, *::after {
   box-sizing: border-box;
-  font-family: sans-serif;
+}
+*{
+  font-family: 'Roboto', sans-serif;
 }
 
-/*JS variables as colours*/
 :root{
   --hue-neutral: 200;
   --hue-wrong: 0;
   --hue-correct: 145;
+  --hue-grey: 100;
 }
 
 body {
   --hue: var(--hue-neutral);
   padding: 0px;
   margin: 0px;
-  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background-color: hsl(var(--hue), 100%, 20%); */
-  /* background-color: navy; */
+  height: 110vh;
 }
 
-.logo{
-  height: auto;
-  margin-left: 20px;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 1.5em;
-  letter-spacing: 1.2px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.login-form{
+header{
+  position: absolute; 
+  top: 0;
+  background-color: rgb(239, 240, 240);
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
-.login-form input{
-  margin: 20px;
-}
-
-
-body.correct{
-  --hue: var(--hue-correct);
-  /* background-color: green; */
-}
-
-body.incorrect{
-  --hue: var(--hue-wrong);
-  /* background-color: red; */
-}
-
 nav{
+  padding-top: 50px;
   margin-bottom: 50px;
 }
 nav a{
@@ -66,12 +44,32 @@ nav a{
 a{
   margin: 50px 20px 20px 20px;
 }
-
+ul{
+  list-style: none;
+}
+.logo{
+  height: auto;
+  margin-left: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 2.5em;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-form input{
+  margin: 20px;
+}
 .container{
   width: 800px;
   max-width: 80%;
   height: 80vh;
-  background-color: white;
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0 0 10px 2px;
@@ -79,18 +77,9 @@ a{
   flex-direction: column;
   text-align: center;
 } 
-
-.btn-grid {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 10px;
-  margin: 20px 0;
-}
-
 td{
   height: 50px;
 }
-
 .btn {
   margin: 20px;
   --hue: var(--hue-neutral);
@@ -102,51 +91,12 @@ td{
   outline: none;
   cursor: pointer;
 }
-
-.btn:hover {
-  border-color: black;
-}
-
-.btn.correct{
-  background-color: greenyellow;
-  /* background-color: hsl(var(--hue-correct) 100%, 50%); */
-  /* --hue: var(--hue-correct); */
-  /* color: black;  */
-  }
-.btn.incorrect{
-  background-color: red;
-  /* background-color: hsl(var(--hue-wrong) 100%, 50%); */
-  /* --hue: var(--hue-wrong); */
-} 
-
-.start-btn, .next-btn{
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 10px;
-}
-
-.controls{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 10px;
-}
-
 .hide{
   display: none;
 } 
 #hide{
   display: none;
 }
-
-ul{
-  list-style: none;
-}
-.btn a{
-  margin-left: 10px;
-}
-
 .view-questions-container{
   width: 90%;
   height: 2000vh;
@@ -157,7 +107,9 @@ ul{
   border: 1px solid #000;
   overflow: scroll;
 }
-
+.qs{
+  margin: 10px;
+}
 .text-container{
   list-style: none;
   height: 20%;
@@ -165,36 +117,15 @@ ul{
   justify-content: space-between;
   flex-direction: column
 }
-
-/* .view-question{
-  display: flex;
-  flex-direction: column;
-}
-.view-question li{
-  margin: 20px 10px;
-}
-#edit, #save, #delete{
-  display: flex;
-  flex-direction: column;
-} */
-
-/* .edit-delete{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-} */
-
 .active{
   background-color: red;
 }
-
 .edit-quiz-container{
   display: flex;
   flex-direction: row;
   justify-content:flex-start;
   align-items:flex-start;
 }
-
 .btn-container{
   display: flex;
   flex-direction: row;
@@ -205,4 +136,8 @@ ul{
 }
 .key-margin{
   padding: 20px;
+}
+.update-container{
+  display: flex;
+  flex-direction: row;
 }

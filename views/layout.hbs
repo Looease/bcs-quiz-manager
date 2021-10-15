@@ -3,14 +3,20 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
   </head>
   <body>
+    <header>
     <nav id="navbar">
       <a href="/" class="logo">LOGO</a>
       <a href="/">Home</a>
-      <a href="/users/login">Logout</a>
+      <a href="/users/logout">Logout</a>
     </nav>
+    </header>
     {{{body}}}
+    <footer></footer>
     <script src='/javascripts/script.js'></script>
   </body>
 </html>

@@ -8,4 +8,3 @@ VALUES
   (2, 'History'),
   (3, 'Computer Science');
 
-SELECT setval('quizes_id_seq', (SELECT max(id) FROM quizes));

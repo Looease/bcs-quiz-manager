@@ -1,35 +1,31 @@
 var express = require('express');
 var router = express.Router();
-let passport = require('passport');
-let editAccess = require('../security/editAccess')
-
+var passport = require('passport');
+var editAccess = require('../security/editAccess')
 var quizService = require('../services/quizService.js');
 
 module.exports = router;
 
-
-
 /* Create new quiz */
-router.get('/new', function(req, res, next) {
+router.get('/new',passport.authenticate('jwt', { session: false }),editAccess.editAccess, function(req, res, next) {
         res.render('quiz/new');
 });
 router.post('/', function(req, res) {
     function onSuccess(result) {
-        res.redirect('/');
+        // res.redirect('/');
     }
+    console.log('Louise', req.body )
     quizService.createNewQuiz(req.body, onSuccess)
 });
 
 //////////////////////////////// Delete
-router.get('/delete', function(req, res, next) {
+router.get('/delete',passport.authenticate('jwt', { session: false }),editAccess.editAccess, function(req, res, next) {
     res.render('quiz/delete');
 });
 
 router.post('/delete', function(req, res) {
-        //const bookId = parseInt(req.params.bookId)
-        //console.log(bookId);
          function onSuccess(result) {
-            res.redirect('/quiz/home');
+            res.redirect('/');
     }
     quizService.deleteQuiz(req.body, onSuccess)
 });

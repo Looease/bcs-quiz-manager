@@ -1,21 +1,43 @@
 <table id="buttons-group">
-    <thead>
     <h1>Edit Answers</h1>
-    </thead>
-    {{meow}}
+    <th>Index</th>
+    <th>Answer</th>
+    <th>Question Id</th>
     {{#each answers}}
         <tr>
             <td class="key-margin">{{lookup @root.answerIndex @key}}:</td>
             <br/>
             <td>{{this.answer}}</td>
-            <td><a href="" class="btn" data-id="{{this.id}}">Edit</a></td>
-            <td><a href="" class="btn" data-id="{{this.id}}">Save</a></td>
-            <td><a href="" class="btn" data-id="{{this.id}}">Delete</a></td>
+            <td>{{this.questionid}}</td>
         </tr>
     {{/each}}
 </table>
 </ul>
-  <ul class="create-btns">
-    <li><a href="" class="btn">Create new answer</a></li>
-</ul>
-
+<section class="update-container">
+<ul>
+{{!-- <h1>Update Answer</h1>
+<form action="/answer" method="POST" target="_blank">
+    <input type="text" placeholder="Answer" name="title">
+    <button class="btn"  type="submit">Submit</button>
+</form> 
+</ul>--}}
+<ul>
+    <a href="/answers" class="btn">New Answer</a>
+<h1>New Answer</h1>
+<form action="/answers-louise" method="POST">
+    <input type="text" placeholder="Answer" name="answer">
+    <input type="hidden" name="questionid" value="{{{answers.1.questionid}}}">
+    <input type="text" placeholder="Correct" name="correct">
+    <button class="btn"  type="submit">Submit</button>
+</form>
+</ul> 
+{{!-- <ul>
+<h1>Delete Answer</h1>
+<form action="/answer3" method="POST">
+    <label type="text" placeholder="Answer" name="answer"}/>
+    <input type="text" name="">
+    </label>
+    <button class="btn" type="submit">Delete</button>
+</form>
+</ul> --}}
+</section>

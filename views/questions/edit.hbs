@@ -1,29 +1,40 @@
 <table id="buttons-group">
     <thead>
     <h1>Edit Questions</h1>
+    <th>Question</th>
+    <th>Quiz Id</th>
     </thead>
-    {{quizzes.title}}
+    {{!-- {{quizzes.title}} --}}
     {{#each questions}}
         <tr>
             <td id="text-row">{{this.questions}}</td>
-            <td><a id="edit-btn" class="btn" onclick="edit_row()" data="{{this.id}}">Edit</a></td>
-            <td><a id="save-btn" class="btn" data-id="{{this.id}}">Save</a></td>
-            <td><a href="" class="btn" data-id="{{this.id}}">Delete</a></td>
-            <td><a href="/answers/answer/{{this.id}}" class="btn" data-id="{{this.id}}">Edit Answer</a></td>
+            <td id="text-row">{{this.quizid}}</td>
+            <td><a href="/answers/answer/{{this.id}}" class="btn" data-id="{{this.id}}">Edit Answers</a></td>
         </tr>
     {{/each}}
 </table>
 </ul>
-  <ul class="create-btns">
-    <li><a href="/quiz/new" class="btn">Create new question</a></li>
+<section class="update-container">
+<ul>
+<h1>Update Question</h1>
+<form action="/quiz" method="POST" target="_blank">
+    <input type="text" placeholder="Question" name="question">
+    <button class="btn"  type="submit">Update</button>
+</form>
 </ul>
-
-{{!-- <section class="view-questions-container">
-  <ul class="view-question">
-    <h3>Category: </h3>
-    {{#each quiz}}
-      <li>
-        {{this.title}}
-      </li>
-    {{/each}}
-  </ul> --}}
+<ul>
+<h1>New Question</h1>
+<form action="/quiz" method="POST" target="_blank">
+    <input type="text" placeholder="Question" name="question">
+    <input type="text" placeholder="Question" name="quizid">
+    <button class="btn"  type="submit">Create</button>
+</form>
+</ul>
+<ul>
+<h1>Delete Question</h1>
+<form action="/questions" method="POST">
+    <input type="text" placeholder="Question" name="question">
+    <button class="btn" type="submit">Delete</button>
+</form>
+</ul>
+</section>

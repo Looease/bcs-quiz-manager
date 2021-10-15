@@ -8,6 +8,7 @@ var passport = require('passport');
 var UserService = require('./services/usersService');// this is new
 var CookieExtractor = require('./security/cookieExtractor');
 
+var quizService = require('./services/quizService.js');
 
 var JwtStrategy = require('passport-jwt').Strategy;
 var passport = require('passport');
@@ -54,7 +55,16 @@ app.use('/users', usersRouter);
 app.use('/quiz', quizRouter); // this is new
 app.use('/questions', questionRouter); // this is new
 app.use('/answers', answerRouter); // this is new
-
+// app.post('/answers-louise', (req, res) => {
+//   console.log("WORKING", req.body)
+// })
+app.post('/answers-louise',passport.authenticate('jwt', { session: false }), function(req, res) {
+  function onSuccess(result) {
+      res.redirect('/answers/:id');
+}
+console.log(req.body.answer)
+quizService.createAnswer(req.body, onSuccess)
+});
 
 
 // catch 404 and forward to error handler

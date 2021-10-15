@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
-let passport = require('passport');
-let editAccess = require('../security/editAccess')
-
+var passport = require('passport');
+var editAccess = require('../security/editAccess');
+var viewAccess = require('../security/viewAccess');
+var restrictedAccess = require('../security/restrictedAccess');
 var quizService = require('../services/quizService.js');
 
 module.exports = router;
 
-router.get('/:title', function(req, res, next) {
+router.get('/:title',passport.authenticate('jwt', { session: false }), function(req, res, next) {
     function onSuccess(result) {
         let quiz = result.rows;
         let questions = result.rows;
@@ -19,31 +20,7 @@ router.get('/:title', function(req, res, next) {
             answer: answer,
         });
     }
-        console.log(req)
         quizService.getQuizQuestionsAndAnswers(req.params.title, onSuccess);
-});
-
-//////////////////////////////// Edit 
-router.get('/edit/:title',passport.authenticate('jwt', { session: false }), function(req, res, next) {
-    function onSuccess(result) {
-        let quiz = result.rows;
-        let id = result.rows;
-        let questions = result.rows;
-        //let quizid = result.rows;
-        //let answer = result.rows;
-        let questionid = result.rows;
-        res.render('questions/edit', {
-            quiz: quiz, 
-            id: id,
-            questions: questions, 
-            //quizid: quizid, 
-            //answer: answer,
-            questionId: questionid            
-        });
-    }
-    console.log(title)
-    //quizService.getAllData(onSuccess);
-    quizService.getQuestions(req.params.title, onSuccess)
 });
 
 router.get('/questionsOnly/:id', passport.authenticate('jwt', { session: false }),  function(req, res, next) {
@@ -55,6 +32,53 @@ router.get('/questionsOnly/:id', passport.authenticate('jwt', { session: false }
             questions: questions,
         });
     }
-     console.log(req)
      quizService.getQuestions(req.params.id, onSuccess);
   });
+
+router.get('/edit/:id',passport.authenticate('jwt', { session: false }), function(req, res, next) {
+    function onSuccess(result) {
+        let quiz = result.rows;
+        //let id = result.id;
+        let questions = result.rows;
+        //let quizid = questions.quizid;
+        let answer = result.rows;
+        let questionid = result.rows;
+        res.render('questions/edit', {
+            quiz: quiz, 
+            //id: id,
+            questions: questions, 
+            //quizid: quizid, 
+            answer: answer,
+            questionId: questionid,           
+        });
+    }
+    quizService.getQuestions(req.params.id, onSuccess)
+});
+
+router.get('/new', function(req, res, next) {
+    res.render('/questions/new');
+});
+
+router.get('/delete', function(req, res, next) {
+    res.render('/questions/delete');
+});
+
+
+router.post('/', function(req, res) {
+    function onSuccess(result) {
+        res.redirect('/questions/edit');
+    }
+    quizService.createQuestion(req.body, onSuccess)
+});
+/////ADD QUESTION
+
+// router.get('/addQuestion', function(req, res, next) {
+//     //function onSuccess(result) {
+//         res.render('/questions/addQuestion');
+//     //}
+//  // quizService.getQuizid(req.params.id, onSuccess) 
+// });
+
+
+////Delete Question
+

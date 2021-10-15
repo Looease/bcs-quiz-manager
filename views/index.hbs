@@ -1,13 +1,10 @@
-  <p>7777777{{isAdmin}}</p> 
-  {{hello}}
-
    {{#if isAdmin}}
 <table id="buttons-group">
     <thead>
     <h1>Quiz Categories</h1>
     </thead>
-    <h2>You are a admin</h2>
-     
+    <h2>You are an admin</h2>
+    {{quiz.0.title}}
     {{#each quiz}}
         <tr>
             <td>{{this.title}}</td>
@@ -19,8 +16,8 @@
    
 </table>
 <ul class="btn-container">
-    <li><a href="/manage/delete/" class="btn" data-id="{{this.id}}">Delete</a></li>
-    <li><a href="/manage/new" class="btn">Create new quiz</a></li>
+    <li><a href="/quiz/delete/" class="btn" data-id="{{this.id}}">Delete</a></li>
+    <li><a href="/quiz/new" class="btn">Create new quiz</a></li>
    </ul>
    {{/if}}  
     {{#if isView}}

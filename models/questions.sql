@@ -20,4 +20,3 @@ VALUES
   (8, 'What is the value of z? var z = "Hello" + 3;', 3),
   (9, 'In Big O notation, what is 0(n)?', 3);
 
-SELECT setval('questions_id_seq', (SELECT max(id) FROM questions));
