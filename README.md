@@ -1,5 +1,9 @@
 # Quiz Manager
 
+This application is the final assessment of my BCS Level 4 Software Engineering Apprenticeshop.
+
+# About this application 
+
 The following README is written in the recommended order for setting up your project. 
 
 This application uses a [Handlebars] [Express] templating package.
