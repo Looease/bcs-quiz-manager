@@ -1,6 +1,8 @@
 # Quiz Manager
 
-This application is the final assessment of my BCS Level 4 Software Engineering Apprenticeshop.
+This application is a management system for a quiz website. You are able to log in as either an admin, viewer or basic user and create, edit and delete quizzes. 
+
+This is the final assessment for my BCS Level 4 Software Engineering Apprenticeshop.
 
 # About this application 
 
